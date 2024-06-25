@@ -9,7 +9,7 @@ This README provides documentation of Social media application frontend.
 If you're working with a Git repository, clone it to your local machine using Git commands or download the source code as a ZIP file and extract it to a local directory. Command to clone the repository on the command prompt.
 
 ```
-git clone
+git clone https://github.com/Vishnukchandran/social_media_application_capstone_frontend.git
 ```
 
 Navigate to the downloaded folder and open the terminal or command prompt on the same folder path, type
