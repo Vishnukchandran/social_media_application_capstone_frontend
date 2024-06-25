@@ -8,7 +8,7 @@ const UserImage = ({ image, size = "60px" }) => {
         width={size}
         height={size}
         alt="user"
-        src={`https://social-media-application-capstone-backend.onrender.com/${image}`}
+        src={`https://social-media-application-capstone-backend.onrender.com/assets/${image}`}
       />
     </Box>
   );

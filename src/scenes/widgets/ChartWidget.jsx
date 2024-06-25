@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography, useTheme } from "@mui/material";
+import { useTheme } from "@mui/material";
 import FlexBetween from "components/FlexBetween";
 import WidgetWrapper from "components/WidgetWrapper";
 import { Bar } from "react-chartjs-2";
@@ -19,9 +19,7 @@ Chart.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const ChartWidget = ({ userId }) => {
   const { palette } = useTheme();
-  const dark = palette.neutral.dark;
-  const main = palette.neutral.main;
-  const medium = palette.neutral.medium;
+  
   const token = useSelector((state) => state.token);
 
   const [user, setUser] = useState(null);
