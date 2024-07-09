@@ -14,7 +14,8 @@ git clone https://github.com/Vishnukchandran/social_media_application_capstone_f
 
 Navigate to the downloaded folder and open the terminal or command prompt on the same folder path, type
 
-```cd social_media_application_capstone_frontend
+```
+cd social_media_application_capstone_frontend
 ```
 
 Once the folder path is changed to the project folder, use the command below to open VS code editor or you can use other code editor installed on your computer and navigate to the social_media_application_capstone_frontend folder.
