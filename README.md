@@ -2,7 +2,7 @@
 
 ### 1.Introduction
 
-This README provides documentation of Social media application frontend.
+This README provides documentation of Social media application frontend which allows to create an account and post pictures.
 
 ### 2.Clone the Repository
 
@@ -14,8 +14,7 @@ git clone https://github.com/Vishnukchandran/social_media_application_capstone_f
 
 Navigate to the downloaded folder and open the terminal or command prompt on the same folder path, type
 
-```
-cd social_media_application_capstone_frontend
+```cd social_media_application_capstone_frontend
 ```
 
 Once the folder path is changed to the project folder, use the command below to open VS code editor or you can use other code editor installed on your computer and navigate to the social_media_application_capstone_frontend folder.
@@ -57,8 +56,14 @@ Contributions are welcome! Please feel free to submit a pull request or open an 
 
 ### 7.Live page
 
-You can access the live page from [here]()
+You can access the live page from [here](https://sokialbook.netlify.app/)
 
-### 8.Credits
+### 8.Testing
+
+You can login the account using the below credentials,
+Email: tester@gmail.com
+password: test@12345
+
+### 9.Credits
 
 Created by VishnuKChandran.
