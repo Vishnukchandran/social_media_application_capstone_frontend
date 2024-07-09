@@ -46,8 +46,8 @@ const FriendListWidget = ({ userId }) => {
             friendId={friend._id}
             name={`${friend.firstName} ${friend.lastName}`}
             subtitle={friend.occupation}
-            userPicturePath={friend.picturePath}
             onClick={() => navigate(`/profile/${friend._id}`)}
+            userPicturePath={friend.picturePath}
           />
         ))}
       </Box>
