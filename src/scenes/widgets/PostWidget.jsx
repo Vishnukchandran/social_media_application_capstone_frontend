@@ -4,7 +4,16 @@ import {
   FavoriteOutlined,
   ShareOutlined,
 } from "@mui/icons-material";
-import { Box, Divider, IconButton, Typography, useTheme } from "@mui/material";
+import {
+  Box,
+  Divider,
+  IconButton,
+  Typography,
+  useTheme,
+  TextField,
+  Button,
+  Avatar,
+} from "@mui/material";
 import FlexBetween from "components/FlexBetween";
 import Friend from "components/Friend";
 import WidgetWrapper from "components/WidgetWrapper";
@@ -24,9 +33,11 @@ const PostWidget = ({
   comments,
 }) => {
   const [isComments, setIsComments] = useState(false);
+  const [commentText, setCommentText] = useState("");
   const dispatch = useDispatch();
   const token = useSelector((state) => state.token);
   const loggedInUserId = useSelector((state) => state.user._id);
+  const loggedInUserPicture = useSelector((state) => state.user.picturePath);
   const isLiked = Boolean(likes[loggedInUserId]);
   const likeCount = Object.keys(likes).length;
 
@@ -48,6 +59,23 @@ const PostWidget = ({
     );
     const updatedPost = await response.json();
     dispatch(setPost({ post: updatedPost }));
+  };
+
+  const submitComment = async () => {
+    const response = await fetch(
+      `https://social-media-application-capstone-backend.onrender.com/posts/${postId}/comment`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ userId: loggedInUserId, comment: commentText }),
+      }
+    );
+    const updatedPost = await response.json();
+    dispatch(setPost({ post: updatedPost }));
+    setCommentText("");
   };
 
   return (
@@ -97,15 +125,53 @@ const PostWidget = ({
       </FlexBetween>
       {isComments && (
         <Box mt="0.5rem">
-          {comments.map((comment, i) => (
-            <Box key={`${name}-${i}`}>
-              <Divider />
-              <Typography sx={{ color: main, m: "0.5rem 0", pl: "1rem" }}>
-                {comment}
+          {comments.map((commentObj, i) => (
+            <Box key={`${name}-${i}`} display="flex" alignItems="center">
+              <Avatar
+                src={`https://social-media-application-capstone-backend.onrender.com/assets/${commentObj.userPicturePath}`}
+                alt="profile"
+                sx={{ width: 30, height: 30, mr: "0.5rem" }}
+              />
+              <Typography sx={{ color: main, m: "0.5rem 0" }}>
+                {commentObj.comment}
               </Typography>
             </Box>
           ))}
           <Divider />
+          <Box display="flex" mt="1rem">
+            <Avatar
+              src={`https://social-media-application-capstone-backend.onrender.com/assets/${loggedInUserPicture}`}
+              alt="profile"
+              sx={{ width: 30, height: 30, mr: "0.5rem" }}
+            />
+            <TextField
+              fullWidth
+              variant="outlined"
+              placeholder="Write a comment..."
+              value={commentText}
+              onChange={(e) => setCommentText(e.target.value)}
+              sx={{
+                "& .MuiInputBase-root": {
+                  height: "30px",
+                  fontSize: "0.875rem",
+                },
+              }}
+            />
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={submitComment}
+              disabled={!commentText.trim()}
+              sx={{
+                ml: "1rem",
+                height: "30px",
+                fontSize: "0.75rem",
+                padding: "0 1rem",
+              }}
+            >
+              Post
+            </Button>
+          </Box>
         </Box>
       )}
     </WidgetWrapper>
